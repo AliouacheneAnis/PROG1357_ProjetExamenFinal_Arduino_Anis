@@ -2,7 +2,9 @@
   Titre      : PROG1357 Projet Final
   Auteur     : Anis Aliouachene
   Date       : 20/04/2023
-  Description: Une description du programme
+  Description:surveillance de la qualité de l'eau. serveur Fauna Java, qui stocke et organise les données collectées 
+              pour une utilisation ultérieure. Cette solution permettra une analyse plus approfondie de la qualité de 
+              l'eau en temps réel, et permettra aux utilisateurs de prendre des mesures préventives pour protéger la qualité de l'eau. 
   Version    : 0.0.1
 */
 
