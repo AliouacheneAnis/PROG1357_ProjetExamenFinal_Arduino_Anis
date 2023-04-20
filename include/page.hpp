@@ -23,8 +23,8 @@ const char index_html[] PROGMEM = R"rawliteral(
                 <input type="password" class="form-control" id="password" name="password">
             </div>
             <div class="form-group">
-                <label for="server_ip">Server IP Address:</label>
-                <input type="text" class="form-control" id="server_ip" name="server_ip">
+                <label for="serverIp">Server IP Address:</label>
+                <input type="text" class="form-control" id="server_ip" name="serverIp">
             </div>
             <div class="form-group">
                 <label for="port">Port:</label>

@@ -26,11 +26,14 @@ int PotValue = 0; // variable for storing the potentiometer value
 // Constantes
 const char* ID = "MyESP32_Server";  // ID Hotspot
 const char* PASS = "anis1234";  // Password de Hotspot 
-const char* PARAM_INPUT_1 = "Ssid";
-const char* PARAM_INPUT_2 = "Password";
-const char* PARAM_INPUT_3 = "ServerIp";
-const char* PARAM_INPUT_4 = "Port";
 const int PotPin = 32; // Potentiometer connecte broche 32
+
+// Constantes utiliser pour les input et ca doit etre la meme chose dans la page html 
+const char* PARAM_INPUT_1 = "ssid";
+const char* PARAM_INPUT_2 = "password";
+const char* PARAM_INPUT_3 = "serverIp";
+const char* PARAM_INPUT_4 = "port";
+
 
 // Declaration Function de configuration de serveur et recupuration des donnes pour se connecter au wifi et serveur Java
 void setupServer();
@@ -133,6 +136,9 @@ void setupServer(){
         Port = request->getParam(PARAM_INPUT_4)->value();
         ServerPortReceived = true; 
       }
+      
+    // retourner une page html de success une fois les donnees envoyer de la page web vers l'ESP32 pour se conencter au serveur java 
+    request->send(200, "text/html", "The values entered by you have been successfully sent to the device <br><a href=\"/\">Return to Home Page</a>");
 
     Serial.println(Ssid); 
     Serial.println(Password);
@@ -142,7 +148,7 @@ void setupServer(){
     // Concatener un string qui le lien vers le serveur Java selon le Ip de serveur et le port 
     ServerUrl = "http://" + ServerIp + ":" + Port + "/data";
     Serial.println(ServerUrl);
-
+    
     // Connecter au wifi specifique selon les donnees saisie par l'utilsateur 
     WiFi.begin(Ssid.c_str(), Password.c_str());
     Serial.print("Connecting to ");
@@ -153,8 +159,5 @@ void setupServer(){
     }
     Serial.print("Connected to ");
     Serial.println(Ssid);
-    
-    // retourner une page html de success une fois les donnees envoyer de la page web vers l'ESP32 pour se conencter au serveur java 
-    request->send(200, "text/html", "The values entered by you have been successfully sent to the device <br><a href=\"/\">Return to Home Page</a>");
   }); 
 }
