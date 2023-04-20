@@ -91,7 +91,7 @@ void loop(){
   Serial.println(WaterLevel);
   Serial.println(PotValue);
   
-  // Debut et lancement HTTP
+  // Démarrer Http vers le serveur Java (URL) afin de poster les donnees vers ce serveur 
   http.begin(ServerUrl.c_str());
 
   // Construction string de request JSON avec le niveau d'eau pour l'Envoyer avec un HTTP POST 
